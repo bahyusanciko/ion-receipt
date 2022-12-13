@@ -1,0 +1,7 @@
+{
+  "name": "ion-receipt",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
