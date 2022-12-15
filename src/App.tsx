@@ -1,8 +1,10 @@
 import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { Redirect, Route } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import Menu from './components/Menu';
-import Page from './pages/Page';
+import Receipt from './pages/Receipt';
+import Report from './pages/Report';
+import { Store } from "./data/state/Store";
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -21,27 +23,45 @@ import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
 /* Theme variables */
-import './theme/variables.css';
+import './theme/variables.scss';
+import { Provider } from 'react-redux';
 
 setupIonicReact();
 
+const listRoute = [
+  {
+    path : '/receipt',
+    component : Receipt
+  },
+  {
+    path : '/report',
+    component : Report
+  },
+]
+
+
 const App: React.FC = () => {
-  return (
-    <IonApp>
-      <IonReactRouter>
-        <IonSplitPane contentId="main">
-          <Menu />
-          <IonRouterOutlet id="main">
-            <Route path="/" exact={true}>
-              <Redirect to="/page/Inbox" />
-            </Route>
-            <Route path="/page/:name" exact={true}>
-              <Page />
-            </Route>
-          </IonRouterOutlet>
-        </IonSplitPane>
-      </IonReactRouter>
-    </IonApp>
+  return (      
+    <Provider store={Store}>
+      <IonApp>
+        <IonReactRouter>
+          <IonSplitPane contentId="main">
+            <Menu />
+            <IonRouterOutlet id="main">
+              <Switch>
+                {
+                  listRoute.map((val,key )=> (
+                    <Route key={key} path={val.path} component={val.component} exact />
+                  ))
+                }
+                <Redirect from="/" to="/receipt" exact />
+              </Switch>
+            </IonRouterOutlet>
+          </IonSplitPane>
+        </IonReactRouter>
+      </IonApp>
+    </Provider>
+
   );
 };
 

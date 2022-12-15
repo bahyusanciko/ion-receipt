@@ -1,0 +1,60 @@
+.toolbar-receipt {
+  --background: #860606;
+  .search {
+    width: 500px;
+    .item-receipt{
+      padding-left: 5px;
+      padding-right: 10px;
+      margin: 0 !important;
+      --border-radius: 10px;
+      --box-shadow: 0px 14px 25px rgba(0, 0, 0, 0.09);
+      ion-icon {
+        margin-right: 5px;
+      }
+  
+      .input-receipt {
+        padding-left: 10px !important;
+        border-left: 1px solid #F4F4F4;
+      }
+  
+      ion-badge {
+        position: absolute;
+        top: 2px;
+        right: 8px;
+        opacity: 0.9;
+        font-size: 0.7em;
+      }
+    }
+  }
+}
+
+.cust-content {
+
+  .main-card {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 !important;
+    overflow: hidden;
+
+    ion-col {
+      display: flex;
+      justify-content: center;
+      padding: 4px;
+    }
+
+    ion-card {
+      margin: 2px !important;
+      margin-bottom: 5px;
+      margin-top: 5px;
+      width: 100%;
+    }
+
+  }
+
+  .img-empty {
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
